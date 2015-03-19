@@ -1,0 +1,13 @@
+public class Holdem(){
+  public static void main(String[] args) {
+  int round = 0;
+    
+   System.out.println("Welcome to Texas Hold'em!");
+  System.out.println("What is your name?");
+  
+  do{
+    playGame();
+  }
+  
+  }
+} //end of class

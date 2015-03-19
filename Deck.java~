@@ -26,7 +26,7 @@ public class Deck{
     return deck.length - usedCards;
   }
   
-  public Cards deal(){    //wasn't sure how to do this (especially with an object return type) so I looked up help for making the method online
+  public Cards deal(){    //wasn't sure how to do this (esp with an object return type) so I looked up the method online
     if (usedCards == deck.length){
       throw new IllegalStateException("No cards are left in the deck.");
     }
