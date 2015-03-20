@@ -1,8 +1,15 @@
 public class Deck{
-  private Cards[] deck = new Cards[52];
   private int usedCards;    //keeps track of how many cards have been dealt
   
+  
   public Deck(){
+     ArrayList<Cards> cardDeck = new <Cards>();
+  {
+    cardDeck.add(new Cards(0,0));
+    
+    
+    
+  }
     int counter = 0; //keeps track of created cards (should be 52)
     
     for (int suit = 0; suit <= 3; suit++) {
@@ -26,7 +33,7 @@ public class Deck{
     return deck.length - usedCards;
   }
   
-  public Cards deal(){    //wasn't sure how to do this (esp with an object return type) so I looked up the method online
+  public Cards deal(){    //wasn't sure how to do this (especially with an object return type) so I looked up help for making the method online
     if (usedCards == deck.length){
       throw new IllegalStateException("No cards are left in the deck.");
     }
