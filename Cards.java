@@ -33,7 +33,23 @@ public class Cards{
    else if (suit == 3)
      return "Diamonds";
    else
+     return "Invalid";     
+  }
+  
+  public String getValueString(){
+   if (value < 10)
+     return Integer.toString(value);
+    else if (value == 13)
+     return "Ace";
+   else if (value == 12)
+     return "King";
+   else if (value == 11)
+     return "Queen";
+   else if (value ==10)
+     return "Jack";
+   else
      return "Invalid";
+    
   }
   
 }  

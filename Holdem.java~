@@ -10,15 +10,21 @@ public class Holdem{
     System.out.println("What is your name?");
     String playerName = user_input.next();
     
+    
     do{                 //main loop
       playGame();
-    } while(lose = false);
-    
-    
+    } while(lose = false); 
   }
+  
   private static void playGame(){
+    Deck deck = new Deck();
+    Cards firstOfHand, secondOfHand;
     
-    
+    deck.shuffle();
+    firstOfHand = deck.deal();
+    secondOfHand = deck.deal();
+    System.out.println("Your hand is: " + firstOfHand.getValue() + " of " + firstOfHand.getSuitString() + " and "
+                      + secondOfHand.getValue() + " of " + secondOfHand.getSuitString());
     
   }   //end playGame
   

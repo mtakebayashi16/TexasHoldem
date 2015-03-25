@@ -5,12 +5,14 @@ public class Deck{
   
   public Deck(){
     int counter = 0; //keeps track of created cards (should be 52)
-    for (int suit = 0; suit <= 3; suit++) {
-      for (int value = 1; value <= 13; value++) {
+    do {
+    for (int value = 0; value <= 3; value++) {
+      for (int suit = 1; suit <= 13; suit++) {
         deck[counter] = new Cards(value,suit);
         counter++; 
       }
     }
+    } while (counter < 52);
   }
   
   public void shuffle(){                           //mixes up the cards
