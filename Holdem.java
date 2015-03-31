@@ -21,12 +21,36 @@ public class Holdem{
     Cards firstOfHand, secondOfHand;
     
     deck.shuffle();
-    firstOfHand = deck.deal();
+    firstOfHand = deck.deal();              //deals out two "hole cards" (the player's hand)
     secondOfHand = deck.deal();
     System.out.println("Your hand is: " + firstOfHand.getValueString() + " of " + firstOfHand.getSuitString() + " and "
                       + secondOfHand.getValueString() + " of " + secondOfHand.getSuitString());
     
+        //first round of betting
+    
+        // "the flop" -- first three community cards revealed
+    
+        //second round of betting
+    
+        // "the turn" -- fourth community card is revealed
+    
+        //third round of betting
+    
+        // "the river" -- fifth (last) community card is revealed
+    
+        //fourth (last) round of betting
+    
+        //all player's hole cards are revealed
+        //best hand wins the pot, or is divided between tied hands
+    
   }   //end playGame
+  
+  private static void betting(){
+    
+    
+  
+  
+  } //end betting
   
   
 } //end of class

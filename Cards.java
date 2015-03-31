@@ -39,13 +39,13 @@ public class Cards{
   public String getValueString(){
    if (value < 10)
      return Integer.toString(value);
-    else if (value == 13)
+    else if (value == 14)
      return "Ace";
-   else if (value == 12)
+   else if (value == 13)
      return "King";
-   else if (value == 11)
+   else if (value == 12)
      return "Queen";
-   else if (value ==10)
+   else if (value ==11)
      return "Jack";
    else
      return "Invalid";

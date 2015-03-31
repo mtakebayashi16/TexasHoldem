@@ -23,8 +23,8 @@ public class Holdem{
     deck.shuffle();
     firstOfHand = deck.deal();
     secondOfHand = deck.deal();
-    System.out.println("Your hand is: " + firstOfHand.getValue() + " of " + firstOfHand.getSuitString() + " and "
-                      + secondOfHand.getValue() + " of " + secondOfHand.getSuitString());
+    System.out.println("Your hand is: " + firstOfHand.getValueString() + " of " + firstOfHand.getSuitString() + " and "
+                      + secondOfHand.getValueString() + " of " + secondOfHand.getSuitString());
     
   }   //end playGame
   

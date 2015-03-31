@@ -7,7 +7,7 @@ public class Deck{
     int counter = 0; //keeps track of created cards (should be 52)
     do {
     for (int value = 0; value <= 3; value++) {
-      for (int suit = 1; suit <= 13; suit++) {
+      for (int suit = 2; suit <= 14; suit++) {
         deck[counter] = new Cards(value,suit);
         counter++; 
       }
