@@ -18,14 +18,26 @@ public class Holdem{
   
   private static void playGame(){
     Deck deck = new Deck();
-    Cards firstOfHand, secondOfHand;
+    ComputerPlayer comp1 = new ComputerPlayer();
+    ComputerPlayer comp2 = new ComputerPlayer();
+    ComputerPlayer comp3 = new ComputerPlayer();
+    ComputerPlayer comp4 = new ComputerPlayer();
+    HumanPlayer person = new HumanPlayer();
     
     deck.shuffle();
-    firstOfHand = deck.deal();              //deals out two "hole cards" (the player's hand)
-    secondOfHand = deck.deal();
-    System.out.println("Your hand is: " + firstOfHand.getValueString() + " of " + firstOfHand.getSuitString() + " and "
-                      + secondOfHand.getValueString() + " of " + secondOfHand.getSuitString());
     
+    for (int i = 0; i < 2; i++){           //deals out "hole cards" (the player's hand)
+     person.addCards(deck.deal());
+     comp1.addCards(deck.deal());
+     comp2.addCards(deck.deal());
+     comp3.addCards(deck.deal());
+     comp4.addCards(deck.deal());
+    }
+    
+    System.out.println("Your hand is: ");
+    person.printHand();         //was having trouble since I was putting this in the println statement, figured out that it doesnt need to be
+                                //there since the method has a println statement inside it already
+     
         //first round of betting
     
         // "the flop" -- first three community cards revealed
@@ -45,12 +57,6 @@ public class Holdem{
     
   }   //end playGame
   
-  private static void betting(){
-    
-    
-  
-  
-  } //end betting
   
   
 } //end of class

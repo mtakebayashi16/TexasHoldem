@@ -4,23 +4,23 @@
  */
 
 public class Cards{
-  private int suit, value;
+  private int suit, number;
   public Cards(){
     suit = 5;
-    value = 1;
+    number = 1;
   }
   
   public Cards(int cardSuit, int cardValue){
    suit = cardSuit;
-   value = cardValue;
+   number = cardValue;
   }
   
   public int getSuit(){      //gets the value of the suit
     return suit;
   }
   
-  public int getValue(){     //gets the card value
-    return value;
+  public int getNumber(){     //gets the card value
+    return number;
   }
   
   public String getSuitString(){
@@ -36,16 +36,16 @@ public class Cards{
      return "Invalid";     
   }
   
-  public String getValueString(){
-   if (value < 10)
-     return Integer.toString(value);
-    else if (value == 14)
+  public String getNumberString(){
+   if (number < 10)
+     return Integer.toString(number);
+    else if (number == 14)
      return "Ace";
-   else if (value == 13)
+   else if (number == 13)
      return "King";
-   else if (value == 12)
+   else if (number == 12)
      return "Queen";
-   else if (value ==11)
+   else if (number ==11)
      return "Jack";
    else
      return "Invalid";
