@@ -37,7 +37,7 @@ public class Cards{
   }
   
   public String getNumberString(){
-   if (number < 10)
+   if (number <= 10)
      return Integer.toString(number);
     else if (number == 14)
      return "Ace";
@@ -45,7 +45,7 @@ public class Cards{
      return "King";
    else if (number == 12)
      return "Queen";
-   else if (number ==11)
+   else if (number == 11)
      return "Jack";
    else
      return "Invalid";

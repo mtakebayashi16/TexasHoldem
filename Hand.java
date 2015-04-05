@@ -3,7 +3,7 @@ public class Hand{
   private int cardSlots;     // so array length isnt exceeded when adding cards to hand
   
   public Hand(){
-    handCards = new Cards[1];
+    handCards = new Cards[3];
     cardSlots = 0;
   }
   

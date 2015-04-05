@@ -27,33 +27,38 @@ public class Holdem{
     deck.shuffle();
     
     for (int i = 0; i < 2; i++){           //deals out "hole cards" (the player's hand)
-     person.addCards(deck.deal());
-     comp1.addCards(deck.deal());
-     comp2.addCards(deck.deal());
-     comp3.addCards(deck.deal());
-     comp4.addCards(deck.deal());
+      person.addCards(deck.deal());
+      comp1.addCards(deck.deal());
+      comp2.addCards(deck.deal());
+      comp3.addCards(deck.deal());
+      comp4.addCards(deck.deal());
     }
     
     System.out.println("Your hand is: ");
     person.printHand();         //was having trouble since I was putting this in the println statement, figured out that it doesnt need to be
-                                //there since the method has a println statement inside it already
-     
-        //first round of betting
+    //there since the method has a println statement inside it already
     
-        // "the flop" -- first three community cards revealed
+    System.out.println(" ");                                 // to add an extra line in the output since there was no spacing between the two lines
+    System.out.println("You have $" + person.printMoney());
     
-        //second round of betting
+    if (stand == false){     //first round of betting
     
-        // "the turn" -- fourth community card is revealed
+    }
     
-        //third round of betting
+    // "the flop" -- first three community cards revealed
     
-        // "the river" -- fifth (last) community card is revealed
+    //second round of betting
     
-        //fourth (last) round of betting
+    // "the turn" -- fourth community card is revealed
     
-        //all player's hole cards are revealed
-        //best hand wins the pot, or is divided between tied hands
+    //third round of betting
+    
+    // "the river" -- fifth (last) community card is revealed
+    
+    //fourth (last) round of betting
+    
+    //all player's hole cards are revealed
+    //best hand wins the pot, or is divided between tied hands
     
   }   //end playGame
   
