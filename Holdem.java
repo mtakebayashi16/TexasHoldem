@@ -18,6 +18,7 @@ public class Holdem{
   
   private static void playGame(){
     Deck deck = new Deck();
+    Pot pot = new Pot();
     ComputerPlayer comp1 = new ComputerPlayer();
     ComputerPlayer comp2 = new ComputerPlayer();
     ComputerPlayer comp3 = new ComputerPlayer();
@@ -41,7 +42,7 @@ public class Holdem{
     System.out.println(" ");                                 // to add an extra line in the output since there was no spacing between the two lines
     System.out.println("You have $" + person.printMoney());
     
-    if (stand == false){     //first round of betting
+    if (person.playing() == true){     //first round of betting
     
     }
     
