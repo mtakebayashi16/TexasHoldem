@@ -5,7 +5,7 @@ public class Pot{
    total = total;
   }
   
-  public void addToPot(int value){
+  public void addToPot(double value){
     total += value;
   }
   

@@ -6,6 +6,7 @@ public class Holdem{
     int round = 0;   //checks what round the game is on (helps determine if more cards need to be played, etc)
     boolean lose = false;    //checks if player has lost the game
     
+    
     System.out.println("Welcome to Texas Hold'em!");
     System.out.println("What is your name?");
     String playerName = user_input.next();
@@ -17,6 +18,9 @@ public class Holdem{
   }
   
   private static void playGame(){
+     double bet = 20;        //minimum bet starts at $20
+    double value;
+    
     Deck deck = new Deck();
     Pot pot = new Pot();
     ComputerPlayer comp1 = new ComputerPlayer();
@@ -42,9 +46,11 @@ public class Holdem{
     System.out.println(" ");                                 // to add an extra line in the output since there was no spacing between the two lines
     System.out.println("You have $" + person.printMoney());
     
-    if (person.playing() == true){     //first round of betting
     
-    }
+    value = person.betting(bet);     //first round of betting
+    pot.addToPot(value);     
+    
+    
     
     // "the flop" -- first three community cards revealed
     
