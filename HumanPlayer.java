@@ -63,9 +63,11 @@ public class HumanPlayer{
     else if (c == 'r'){                //if player raises, they can input by how much they would like to raise
       System.out.println("How much would you like to raise by? (only type in a number value)");
       cost = in.nextInt();
+      cost += bet;
       if (cost <= 0){
         System.out.println("Please input a value greater than 0");
         cost = in.nextInt();
+        cost += bet;
       }
       else
       money = money - cost;  //subtracts input value from player's money

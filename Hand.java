@@ -36,4 +36,5 @@ public class Hand{
                        + handCards[1].getNumberString() + " of " + handCards[1].getSuitString());
   }
   
+  
 }  //end of class

@@ -29,13 +29,20 @@ public class ComputerPlayer{
     return(compHand.value() >= winChance);
   }
   
-  public double firstRoundBet(){     //created a method for the first round since it will differ from other rounds (no house cards revealed)
+  public double firstRoundBet(double betVal, double potVal){     //created a method for the first round since it will differ from other rounds (no house cards revealed)
    double bet = 0;
     if (this.stand() == true){
-      
+      if (compHand.value() >= 190){      //raise, chose a random numerical value for the cards to be higher then (king value * 14 + queen value)
+        money = money - (potVal * 0.3);
+        bet = (potVal * 0.3) + betVal;
+      }
+      else{                            //call
+        money = money - betVal;
+        bet = betVal;
+      }
     }
     else{
-      playing = false;
+      playing = false;                //fold cards
     } 
     return bet;
   }

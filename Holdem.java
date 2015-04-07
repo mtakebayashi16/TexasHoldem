@@ -50,8 +50,12 @@ public class Holdem{
     value = person.betting(bet);     //player first round of betting
     pot.addToPot(value);     
     
-    /* ADD COMPUTER BETTING */      //computer 1st round betting
+    double potVal = pot.potValue();
     
+    comp1.firstRoundBet(20, potVal);     //computer 1st round betting
+    comp2.firstRoundBet(20, potVal);
+    comp3.firstRoundBet(20, potVal);
+    comp4.firstRoundBet(20, potVal);
     
     Cards flop1 = deck.deal();  // "the flop" -- first three community cards revealed
     Cards flop2 = deck.deal();
@@ -64,8 +68,7 @@ public class Holdem{
     value = person.betting(bet);
     pot.addToPot(value);
     }
-    else {
-      
+    else { 
     }
     
     
@@ -113,12 +116,16 @@ public class Holdem{
                       + ", and " + river.getNumberString() + " of " + river.getSuitString());    
      System.out.println("Your hand is: ");
      person.printHand();
+     System.out.println(" ");
      System.out.println("Player 1's hand is: ");
      comp1.printHand();
+     System.out.println(" ");
      System.out.println("Player 2's hand is: ");
      comp2.printHand();
+     System.out.println(" ");
      System.out.println("Player 3's hand is: ");
      comp3.printHand();
+     System.out.println(" ");
      System.out.println("Player 4's hand is: ");
      comp4.printHand();
      
