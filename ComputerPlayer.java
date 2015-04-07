@@ -147,6 +147,168 @@ public class ComputerPlayer{
     return bet;  
   }
   
+  public double thirdRoundBet(Cards flop1, Cards flop2, Cards flop3, Cards turn, Cards hand1, Cards hand2, double betVal, double potVal){
+    double bet = 0; 
+    Cards[] playingCards = new Cards[5];
+    playingCards[0] = flop1; 
+    playingCards[1] = flop2;
+    playingCards[2] = flop3;
+    playingCards[3] = turn;
+    playingCards[4] = hand1;
+    playingCards[5] = hand2;
+    
+    for (int i = 1; i < playingCards.length; i++){            //sorts cards in numerical order
+      if (playingCards[i].getNumber() < playingCards[i-1].getNumber()){
+        Cards temp = playingCards[i];
+        playingCards[i] = playingCards[i-1];
+        playingCards[i-1] = temp;
+      }
+    }
+    
+    int sameSuit = 0;    //keeps track of how many cards have the same suit
+    int pair = 0;      //keeps track of how many pairs there are
+    int changingNumber = 0;  //keeps track of how many cards are in increasing order
+    int valueofCards = 0;
+      
+    for (int i = 0; i < playingCards.length-1; i++){   //check how many numbers are the same
+      if (playingCards[i].getNumber() == playingCards[i+1].getNumber()){        
+        pair ++;
+      }
+    }
+    for (int i = 0; i < playingCards.length-1; i++){    //check how many numbers are "in a row"
+      if (playingCards[i].getNumber() == (playingCards[i+1].getNumber() + 1)){    
+        changingNumber ++;     
+      }
+    }
+      
+     for (int i = 0; i < playingCards.length; i++){       //check how many suits are the same
+       for (int j = 1; j < playingCards.length; j++){
+         if (playingCards[i].getSuit() == playingCards[j].getSuit()){
+          sameSuit++; 
+         }
+       }
+     }
+     
+     sameSuit = sameSuit - 4; //using the nested four loops will still have 4 times where the card is compared against itself
+    
+    if (changingNumber == 2)        //creates a "value" that approximates how strong the hand is
+      valueofCards += 100;
+     else if (changingNumber > 2)
+      valueofCards += 200;
+     else
+       valueofCards +=0;
+     
+     if (sameSuit >=3)
+       valueofCards +=200;
+     
+     valueofCards = (pair * 200); 
+     if (hand1.getNumber() > hand2.getNumber())
+       valueofCards += hand1.getNumber();
+     else
+       valueofCards += hand2.getNumber();
+     
+     if (valueofCards > 200){
+       if (valueofCards > 400){
+          money = money - (potVal * 0.3);   //raises by 30% of the pot's value
+        bet = (potVal * 0.3) + betVal;
+        System.out.println("Player raises by " + (potVal * 0.3));
+       }
+       else{                        //call
+        money = money - betVal;
+        bet = betVal;
+        System.out.println("Player calls"); 
+       }
+     }
+     else{ 
+      playing = false;                //fold cards
+      System.out.println("Player folds");
+     }
+    
+    return bet;  
+  }
+  
+  
+  public double fourthRoundBet(Cards flop1, Cards flop2, Cards flop3, Cards turn, Cards river, Cards hand1, Cards hand2, double betVal, double potVal){
+    double bet = 0; 
+    Cards[] playingCards = new Cards[6];
+    playingCards[0] = flop1; 
+    playingCards[1] = flop2;
+    playingCards[2] = flop3;
+    playingCards[3] = turn;
+    playingCards[4] = river;
+    playingCards[5] = hand1;
+    playingCards[6] = hand2;
+    
+    for (int i = 1; i < playingCards.length; i++){            //sorts cards in numerical order
+      if (playingCards[i].getNumber() < playingCards[i-1].getNumber()){
+        Cards temp = playingCards[i];
+        playingCards[i] = playingCards[i-1];
+        playingCards[i-1] = temp;
+      }
+    }
+    
+    int sameSuit = 0;    //keeps track of how many cards have the same suit
+    int pair = 0;      //keeps track of how many pairs there are
+    int changingNumber = 0;  //keeps track of how many cards are in increasing order
+    int valueofCards = 0;
+      
+    for (int i = 0; i < playingCards.length-1; i++){   //check how many numbers are the same
+      if (playingCards[i].getNumber() == playingCards[i+1].getNumber()){        
+        pair ++;
+      }
+    }
+    for (int i = 0; i < playingCards.length-1; i++){    //check how many numbers are "in a row"
+      if (playingCards[i].getNumber() == (playingCards[i+1].getNumber() + 1)){    
+        changingNumber ++;     
+      }
+    }
+      
+     for (int i = 0; i < playingCards.length; i++){       //check how many suits are the same
+       for (int j = 1; j < playingCards.length; j++){
+         if (playingCards[i].getSuit() == playingCards[j].getSuit()){
+          sameSuit++; 
+         }
+       }
+     }
+     
+     sameSuit = sameSuit - 4; //using the nested four loops will still have 4 times where the card is compared against itself
+    
+    if (changingNumber == 2)        //creates a "value" that approximates how strong the hand is
+      valueofCards += 100;
+     else if (changingNumber > 2)
+      valueofCards += 200;
+     else
+       valueofCards +=0;
+     
+     if (sameSuit >=3)
+       valueofCards +=200;
+     
+     valueofCards = (pair * 200); 
+     if (hand1.getNumber() > hand2.getNumber())
+       valueofCards += hand1.getNumber();
+     else
+       valueofCards += hand2.getNumber();
+     
+     if (valueofCards > 200){
+       if (valueofCards > 400){
+          money = money - (potVal * 0.3);   //raises by 30% of the pot's value
+        bet = (potVal * 0.3) + betVal;
+        System.out.println("Player raises by " + (potVal * 0.3));
+       }
+       else{                        //call
+        money = money - betVal;
+        bet = betVal;
+        System.out.println("Player calls"); 
+       }
+     }
+     else{ 
+      playing = false;                //fold cards
+      System.out.println("Player folds");
+     }
+    
+    return bet;  
+  }
+  
   public boolean playing(){
     return playing;
   }

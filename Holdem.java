@@ -60,7 +60,7 @@ public class Holdem{
     
     System.out.println(" ");                                 // to add an extra line in the output since there was no spacing between the two lines
     System.out.println("You have $" + person.printMoney());
-    System.out.println("Player 1 has $" + comp1.printMoney());
+    System.out.println("Player 1 has $" + comp1.printMoney());    //should have made this a method since these printline statements are used repeatedly
     System.out.println("Player 2 has $" + comp2.printMoney());
     System.out.println("Player 3 has $" + comp3.printMoney());
     System.out.println("Player 4 has $" + comp4.printMoney());
@@ -76,31 +76,26 @@ public class Holdem{
       value = comp1.firstRoundBet(20, potVal);
       pot.addToPot(value);
     }
-    else {
-    }
+    
     
     if (comp2.playing() == true){     
       bet = 20;
       value = comp2.firstRoundBet(20, potVal);
       pot.addToPot(value);
     }
-    else {
-    }
+    
     
     if (comp3.playing() == true){     
       bet = 20;
       value = comp3.firstRoundBet(20, potVal);
       pot.addToPot(value);
     }
-    else {
-    }
+   
     
     if (comp4.playing() == true){     //computer 1st round betting
       bet = 20;
       value = comp4.firstRoundBet(20, potVal);
       pot.addToPot(value);
-    }
-    else {
     }
     
     
@@ -121,36 +116,31 @@ public class Holdem{
       value = person.betting(bet);
       pot.addToPot(value);
     }
-    else { 
-    }
+   
     
     if (comp1.playing() == true){   //computer 2nd round betting
       value = comp1.secondRoundBet(flop1, flop2, flop3, comp1.getCard1(), comp1.getCard2(), bet, potVal);;
       pot.addToPot(value);
     }
-    else { 
-    }  
+    
     
     if (comp2.playing() == true){  
       value = comp2.secondRoundBet(flop1, flop2, flop3, comp2.getCard1(), comp2.getCard2(), bet, potVal);;
       pot.addToPot(value);
     }
-    else { 
-    }  
+   
     
     if (comp3.playing() == true){  
       value = comp3.secondRoundBet(flop1, flop2, flop3, comp3.getCard1(), comp3.getCard2(), bet, potVal);;
       pot.addToPot(value);
     }
-    else { 
-    }  
     
-    if (comp4.playing() == true){   //computer 2nd round betting
+    
+    if (comp4.playing() == true){   
       value = comp4.secondRoundBet(flop1, flop2, flop3, comp4.getCard1(), comp4.getCard2(), bet, potVal);;
       pot.addToPot(value);
     }
-    else { 
-    }  
+    
     
     Cards turn = deck.deal();  // "the turn" -- fourth community card is revealed
     System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()
@@ -169,10 +159,31 @@ public class Holdem{
       value = person.betting(bet);
       pot.addToPot(value);
     }
-    else {
+    
+    
+    if (comp1.playing() == true){   //computer 3rd round betting
+      value = comp1.thirdRoundBet(flop1, flop2, flop3, turn, comp1.getCard1(), comp1.getCard2(), bet, potVal);;
+      pot.addToPot(value);
+    }
+        
+    
+     if (comp2.playing() == true){   
+      value = comp2.thirdRoundBet(flop1, flop2, flop3, turn, comp2.getCard2(), comp2.getCard2(), bet, potVal);;
+      pot.addToPot(value);
+    }
+     
+    
+    if (comp3.playing() == true){   
+      value = comp3.thirdRoundBet(flop1, flop2, flop3, turn, comp3.getCard2(), comp3.getCard2(), bet, potVal);;
+      pot.addToPot(value);
+    }
+     
+    
+    if (comp4.playing() == true){   
+      value = comp4.thirdRoundBet(flop1, flop2, flop3, turn, comp4.getCard2(), comp4.getCard2(), bet, potVal);;
+      pot.addToPot(value);
     }
     
-    /* ADD COMPUTER BETTING */      //computer 3rd round betting
     
     Cards river = deck.deal();    // "the river" -- fifth (last) community card is revealed
     System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()
@@ -192,11 +203,29 @@ public class Holdem{
       value = person.betting(bet);
       pot.addToPot(value);
     }
-    else {
-      
+   
+    if (comp1.playing() == true){      //computer 4th round betting
+      value = comp1.fourthRoundBet(flop1, flop2, flop3, turn, river, comp1.getCard2(), comp1.getCard2(), bet, potVal);;
+      pot.addToPot(value);
+    }
+   
+    if (comp2.playing() == true){     
+      value = comp2.fourthRoundBet(flop1, flop2, flop3, turn, river, comp2.getCard2(), comp2.getCard2(), bet, potVal);;
+      pot.addToPot(value);
     }
     
-    /* ADD COMPUTER BETTING */  //computer 4th round betting
+    
+     if (comp3.playing() == true){     
+      value = comp3.fourthRoundBet(flop1, flop2, flop3, turn, river, comp3.getCard2(), comp3.getCard2(), bet, potVal);;
+      pot.addToPot(value);
+    }
+   
+    
+      if (comp4.playing() == true){     
+      value = comp4.fourthRoundBet(flop1, flop2, flop3, turn, river, comp4.getCard2(), comp4.getCard2(), bet, potVal);;
+      pot.addToPot(value);
+    }
+    
     
     System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()     //all player's hole cards are revealed
                          + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
