@@ -55,45 +55,45 @@ public class Holdem{
     
     double potVal = pot.potValue();
     
-     if (comp1.playing() == true){     //computer 1st round betting
-    bet = 20;
-    value = comp1.firstRoundBet(20, potVal);
-    pot.addToPot(value);
+    if (comp1.playing() == true){     //computer 1st round betting
+      bet = 20;
+      value = comp1.firstRoundBet(20, potVal);
+      pot.addToPot(value);
     }
     else {
     }
-     
+    
     if (comp2.playing() == true){     
-    bet = 20;
-    value = comp2.firstRoundBet(20, potVal);
-    pot.addToPot(value);
+      bet = 20;
+      value = comp2.firstRoundBet(20, potVal);
+      pot.addToPot(value);
     }
     else {
     }
     
-     if (comp3.playing() == true){     
-    bet = 20;
-    value = comp3.firstRoundBet(20, potVal);
-    pot.addToPot(value);
+    if (comp3.playing() == true){     
+      bet = 20;
+      value = comp3.firstRoundBet(20, potVal);
+      pot.addToPot(value);
     }
     else {
     }
     
-     if (comp4.playing() == true){     //computer 1st round betting
-    bet = 20;
-    value = comp4.firstRoundBet(20, potVal);
-    pot.addToPot(value);
+    if (comp4.playing() == true){     //computer 1st round betting
+      bet = 20;
+      value = comp4.firstRoundBet(20, potVal);
+      pot.addToPot(value);
     }
     else {
     }
-   
+    
     
     Cards flop1 = deck.deal();  // "the flop" -- first three community cards revealed
     Cards flop2 = deck.deal();
     Cards flop3 = deck.deal();
     System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()
-                      + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
-                      + ", and " + flop3.getNumberString() + " of " + flop3.getSuitString());
+                         + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
+                         + ", and " + flop3.getNumberString() + " of " + flop3.getSuitString());
     System.out.println("You have $" + person.printMoney());
     System.out.println("Player 1 has $" + comp1.printMoney());
     System.out.println("Player 2 has $" + comp2.printMoney());
@@ -101,27 +101,45 @@ public class Holdem{
     System.out.println("Player 4 has $" + comp4.printMoney());
     
     if (person.playing() == true){   //player second round of betting
-    value = person.betting(bet);
-    pot.addToPot(value);
+      value = person.betting(bet);
+      pot.addToPot(value);
     }
     else { 
     }
     
-    
-     if (comp1.playing() == true){   //computer 2nd round betting
-    value = comp1.secondRoundBet(flop1, flop2, flop3, comp1.getCard1(), comp1.getCard2(), bet);;
-    pot.addToPot(value);
+    if (comp1.playing() == true){   //computer 2nd round betting
+      value = comp1.secondRoundBet(flop1, flop2, flop3, comp1.getCard1(), comp1.getCard2(), bet, potVal);;
+      pot.addToPot(value);
     }
     else { 
     }  
     
-     
+    if (comp2.playing() == true){  
+      value = comp2.secondRoundBet(flop1, flop2, flop3, comp2.getCard1(), comp2.getCard2(), bet, potVal);;
+      pot.addToPot(value);
+    }
+    else { 
+    }  
+    
+    if (comp3.playing() == true){  
+      value = comp3.secondRoundBet(flop1, flop2, flop3, comp3.getCard1(), comp3.getCard2(), bet, potVal);;
+      pot.addToPot(value);
+    }
+    else { 
+    }  
+    
+    if (comp4.playing() == true){   //computer 2nd round betting
+      value = comp4.secondRoundBet(flop1, flop2, flop3, comp4.getCard1(), comp4.getCard2(), bet, potVal);;
+      pot.addToPot(value);
+    }
+    else { 
+    }  
     
     Cards turn = deck.deal();  // "the turn" -- fourth community card is revealed
     System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()
-                      + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
-                      + ", " + flop3.getNumberString() + " of " + flop3.getSuitString()
-                      + ", and " + turn.getNumberString() + " of " + turn.getSuitString());
+                         + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
+                         + ", " + flop3.getNumberString() + " of " + flop3.getSuitString()
+                         + ", and " + turn.getNumberString() + " of " + turn.getSuitString());
     System.out.println("You have $" + person.printMoney());
     System.out.println("Player 1 has $" + comp1.printMoney());
     System.out.println("Player 2 has $" + comp2.printMoney());
@@ -129,9 +147,9 @@ public class Holdem{
     System.out.println("Player 4 has $" + comp4.printMoney());
     
     if (person.playing() == true){     //player third round of betting
-    bet = 40;
-    value = person.betting(bet);
-    pot.addToPot(value);
+      bet = 40;
+      value = person.betting(bet);
+      pot.addToPot(value);
     }
     else {
     }
@@ -140,10 +158,10 @@ public class Holdem{
     
     Cards river = deck.deal();    // "the river" -- fifth (last) community card is revealed
     System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()
-                      + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
-                      + ", " + flop3.getNumberString() + " of " + flop3.getSuitString()
-                      + ", " + turn.getNumberString() + " of " + turn.getSuitString()
-                      + ", and " + river.getNumberString() + " of " + river.getSuitString());
+                         + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
+                         + ", " + flop3.getNumberString() + " of " + flop3.getSuitString()
+                         + ", " + turn.getNumberString() + " of " + turn.getSuitString()
+                         + ", and " + river.getNumberString() + " of " + river.getSuitString());
     System.out.println("You have $" + person.printMoney());
     System.out.println("Player 1 has $" + comp1.printMoney());
     System.out.println("Player 2 has $" + comp2.printMoney());
@@ -151,9 +169,9 @@ public class Holdem{
     System.out.println("Player 4 has $" + comp4.printMoney());
     
     if (person.playing() == true){       //player fourth (last) round of betting
-    bet = 40;
-    value = person.betting(bet);
-    pot.addToPot(value);
+      bet = 40;
+      value = person.betting(bet);
+      pot.addToPot(value);
     }
     else {
       
@@ -161,26 +179,26 @@ public class Holdem{
     
     /* ADD COMPUTER BETTING */  //computer 4th round betting
     
-     System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()     //all player's hole cards are revealed
-                      + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
-                      + ", " + flop3.getNumberString() + " of " + flop3.getSuitString()
-                      + ", " + turn.getNumberString() + " of " + turn.getSuitString()
-                      + ", and " + river.getNumberString() + " of " + river.getSuitString());    
-     System.out.println("Your hand is: ");
-     person.printHand();
-     System.out.println(" ");
-     System.out.println("Player 1's hand is: ");
-     comp1.printHand();
-     System.out.println(" ");
-     System.out.println("Player 2's hand is: ");
-     comp2.printHand();
-     System.out.println(" ");
-     System.out.println("Player 3's hand is: ");
-     comp3.printHand();
-     System.out.println(" ");
-     System.out.println("Player 4's hand is: ");
-     comp4.printHand();
-     
+    System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()     //all player's hole cards are revealed
+                         + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
+                         + ", " + flop3.getNumberString() + " of " + flop3.getSuitString()
+                         + ", " + turn.getNumberString() + " of " + turn.getSuitString()
+                         + ", and " + river.getNumberString() + " of " + river.getSuitString());    
+    System.out.println("Your hand is: ");
+    person.printHand();
+    System.out.println(" ");
+    System.out.println("Player 1's hand is: ");
+    comp1.printHand();
+    System.out.println(" ");
+    System.out.println("Player 2's hand is: ");
+    comp2.printHand();
+    System.out.println(" ");
+    System.out.println("Player 3's hand is: ");
+    comp3.printHand();
+    System.out.println(" ");
+    System.out.println("Player 4's hand is: ");
+    comp4.printHand();
+    
     //best hand wins the pot, or is divided between tied hands
     
   }   //end playGame
