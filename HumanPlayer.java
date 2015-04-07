@@ -24,6 +24,11 @@ public class HumanPlayer{
     return playing;
   }
   
+  public double smallBlind(){
+   money = money - 100;
+   return 100;
+  }
+  
   public boolean stand(){
     String input;
     char i;            //so the program can compare the user input

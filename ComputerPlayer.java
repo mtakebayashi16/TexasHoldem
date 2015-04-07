@@ -37,6 +37,16 @@ public class ComputerPlayer{
     return compHand.getCard2();
   }
   
+  public double bigBlind(){
+   money = money - 200;
+   return 200;
+  }
+  
+  public double smallBlind(){
+   money = money - 100;
+   return 100;
+  }
+  
   public double firstRoundBet(double betVal, double potVal){     //created a method for the first round since it will differ from other rounds (no house cards revealed)
     double bet = 0;
     if (this.stand() == true){

@@ -42,6 +42,21 @@ public class Holdem{
     System.out.println("Your hand is: ");
     person.printHand();         //was having trouble since I was putting this in the println statement, figured out that it doesnt need to be
     //there since the method has a println statement inside it already
+      
+     double initialValue = comp1.bigBlind();
+      pot.addToPot(initialValue);
+      
+      initialValue = comp2.smallBlind();
+      pot.addToPot(initialValue);
+      
+      initialValue = comp3.smallBlind();
+      pot.addToPot(initialValue);
+      
+      initialValue = comp4.smallBlind();
+      pot.addToPot(initialValue);
+      
+      initialValue = person.smallBlind();
+      pot.addToPot(initialValue);
     
     System.out.println(" ");                                 // to add an extra line in the output since there was no spacing between the two lines
     System.out.println("You have $" + person.printMoney());
@@ -49,6 +64,7 @@ public class Holdem{
     System.out.println("Player 2 has $" + comp2.printMoney());
     System.out.println("Player 3 has $" + comp3.printMoney());
     System.out.println("Player 4 has $" + comp4.printMoney());
+    System.out.println("There is $" + pot.potValue() + " in the pot");
     
     value = person.betting(bet);     //player first round of betting
     pot.addToPot(value);     
@@ -99,6 +115,7 @@ public class Holdem{
     System.out.println("Player 2 has $" + comp2.printMoney());
     System.out.println("Player 3 has $" + comp3.printMoney());
     System.out.println("Player 4 has $" + comp4.printMoney());
+    System.out.println("There is $" + pot.potValue() + " in the pot");
     
     if (person.playing() == true){   //player second round of betting
       value = person.betting(bet);
@@ -145,6 +162,7 @@ public class Holdem{
     System.out.println("Player 2 has $" + comp2.printMoney());
     System.out.println("Player 3 has $" + comp3.printMoney());
     System.out.println("Player 4 has $" + comp4.printMoney());
+    System.out.println("There is $" + pot.potValue() + " in the pot");
     
     if (person.playing() == true){     //player third round of betting
       bet = 40;
@@ -167,6 +185,7 @@ public class Holdem{
     System.out.println("Player 2 has $" + comp2.printMoney());
     System.out.println("Player 3 has $" + comp3.printMoney());
     System.out.println("Player 4 has $" + comp4.printMoney());
+    System.out.println("There is $" + pot.potValue() + " in the pot");
     
     if (person.playing() == true){       //player fourth (last) round of betting
       bet = 40;
