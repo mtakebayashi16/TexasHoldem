@@ -18,7 +18,7 @@ public class Holdem{
   }
   
   private static void playGame(){
-     double bet = 20;        //minimum bet starts at $20
+    double bet = 20;        //minimum bet starts at $20
     double value;
     
     Deck deck = new Deck();
@@ -47,22 +47,43 @@ public class Holdem{
     System.out.println("You have $" + person.printMoney());
     
     
-    value = person.betting(bet);     //first round of betting
+    value = person.betting(bet);     //player first round of betting
     pot.addToPot(value);     
     
+    /* ADD COMPUTER BETTING */
     
     
-    // "the flop" -- first three community cards revealed
+    Cards flop1 = deck.deal();  // "the flop" -- first three community cards revealed
+    Cards flop2 = deck.deal();
+    Cards flop3 = deck.deal();
+    System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()
+                      + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
+                      + ", and " + flop3.getNumberString() + " of " + flop3.getSuitString());
     
-    //second round of betting
+    //player second round of betting
     
-    // "the turn" -- fourth community card is revealed
+    //computer 2nd round betting
     
-    //third round of betting
+    Cards turn = deck.deal();  // "the turn" -- fourth community card is revealed
+    System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()
+                      + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
+                      + ", " + flop3.getNumberString() + " of " + flop3.getSuitString()
+                      + ", and " + turn.getNumberString() + " of " + turn.getSuitString());
     
-    // "the river" -- fifth (last) community card is revealed
+    //player third round of betting
     
-    //fourth (last) round of betting
+    //computer 3rd round betting
+    
+    Cards river = deck.deal();    // "the river" -- fifth (last) community card is revealed
+    System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()
+                      + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
+                      + ", " + flop3.getNumberString() + " of " + flop3.getSuitString()
+                      + ", " + turn.getNumberString() + " of " + turn.getSuitString()
+                      + ", and " + river.getNumberString() + " of " + river.getSuitString());
+    
+    //player fourth (last) round of betting
+    
+    //computer 4th round betting
     
     //all player's hole cards are revealed
     //best hand wins the pot, or is divided between tied hands
