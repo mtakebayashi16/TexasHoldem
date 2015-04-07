@@ -59,17 +59,23 @@ public class ComputerPlayer{
   }
   
   public double secondRoundBet(Cards flop1, Cards flop2, Cards flop3, Cards hand1, Cards hand2, double betVal){
-     Cards[] playingCards = new Cards[4];
+    double bet = 0; 
+    Cards[] playingCards = new Cards[4];
       playingCards[0] = flop1; 
       playingCards[1] = flop2;
       playingCards[2] = flop3;
       playingCards[3] = hand1;
       playingCards[4] = hand2;
       
-      for (int i = 0; i < playingCards.length; i++){ //orders cards according to numerical value
-         
+      for (int i = 1; i < playingCards.length; i++){            //sorts cards in numerical order
+        if (playingCards[i].getNumber() < playingCards[i-1].getNumber()){
+          Cards temp = playingCards[i];
+          playingCards[i] = playingCards[i-1];
+          playingCards[i-1] = temp;
+        }
       }
       
+    return bet;  
   }
   
    public boolean playing(){
