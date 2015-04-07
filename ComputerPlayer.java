@@ -33,21 +33,26 @@ public class ComputerPlayer{
    double bet = 0;
     if (this.stand() == true){
       if (compHand.value() >= 190){      //raise, chose a random numerical value for the cards to be higher then (king value * 14 + queen value)
-        money = money - (potVal * 0.3);
+        money = money - (potVal * 0.3);   //raises by 30% of the pot's value
         bet = (potVal * 0.3) + betVal;
+        System.out.println("Player raises by " + (potVal * 0.3));
       }
       else{                            //call
         money = money - betVal;
         bet = betVal;
+        System.out.println("Player calls");
       }
     }
     else{
       playing = false;                //fold cards
+      System.out.println("Player folds");
     } 
     return bet;
   }
   
- 
+   public boolean playing(){
+    return playing;
+  }
   
   
   

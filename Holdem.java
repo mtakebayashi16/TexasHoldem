@@ -45,17 +45,48 @@ public class Holdem{
     
     System.out.println(" ");                                 // to add an extra line in the output since there was no spacing between the two lines
     System.out.println("You have $" + person.printMoney());
-    
+    System.out.println("Player 1 has $" + comp1.printMoney());
+    System.out.println("Player 2 has $" + comp2.printMoney());
+    System.out.println("Player 3 has $" + comp3.printMoney());
+    System.out.println("Player 4 has $" + comp4.printMoney());
     
     value = person.betting(bet);     //player first round of betting
     pot.addToPot(value);     
     
     double potVal = pot.potValue();
     
-    comp1.firstRoundBet(20, potVal);     //computer 1st round betting
-    comp2.firstRoundBet(20, potVal);
-    comp3.firstRoundBet(20, potVal);
-    comp4.firstRoundBet(20, potVal);
+     if (comp1.playing() == true){     //computer 1st round betting
+    bet = 20;
+    value = comp1.firstRoundBet(20, potVal);
+    pot.addToPot(value);
+    }
+    else {
+    }
+     
+    if (comp2.playing() == true){     
+    bet = 20;
+    value = comp2.firstRoundBet(20, potVal);
+    pot.addToPot(value);
+    }
+    else {
+    }
+    
+     if (comp3.playing() == true){     
+    bet = 20;
+    value = comp3.firstRoundBet(20, potVal);
+    pot.addToPot(value);
+    }
+    else {
+    }
+    
+     if (comp4.playing() == true){     //computer 1st round betting
+    bet = 20;
+    value = comp4.firstRoundBet(20, potVal);
+    pot.addToPot(value);
+    }
+    else {
+    }
+   
     
     Cards flop1 = deck.deal();  // "the flop" -- first three community cards revealed
     Cards flop2 = deck.deal();
@@ -63,6 +94,11 @@ public class Holdem{
     System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()
                       + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
                       + ", and " + flop3.getNumberString() + " of " + flop3.getSuitString());
+    System.out.println("You have $" + person.printMoney());
+    System.out.println("Player 1 has $" + comp1.printMoney());
+    System.out.println("Player 2 has $" + comp2.printMoney());
+    System.out.println("Player 3 has $" + comp3.printMoney());
+    System.out.println("Player 4 has $" + comp4.printMoney());
     
     if (person.playing() == true){   //player second round of betting
     value = person.betting(bet);
@@ -79,6 +115,11 @@ public class Holdem{
                       + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
                       + ", " + flop3.getNumberString() + " of " + flop3.getSuitString()
                       + ", and " + turn.getNumberString() + " of " + turn.getSuitString());
+    System.out.println("You have $" + person.printMoney());
+    System.out.println("Player 1 has $" + comp1.printMoney());
+    System.out.println("Player 2 has $" + comp2.printMoney());
+    System.out.println("Player 3 has $" + comp3.printMoney());
+    System.out.println("Player 4 has $" + comp4.printMoney());
     
     if (person.playing() == true){     //player third round of betting
     bet = 40;
@@ -86,7 +127,6 @@ public class Holdem{
     pot.addToPot(value);
     }
     else {
-      
     }
     
     /* ADD COMPUTER BETTING */      //computer 3rd round betting
@@ -97,6 +137,11 @@ public class Holdem{
                       + ", " + flop3.getNumberString() + " of " + flop3.getSuitString()
                       + ", " + turn.getNumberString() + " of " + turn.getSuitString()
                       + ", and " + river.getNumberString() + " of " + river.getSuitString());
+    System.out.println("You have $" + person.printMoney());
+    System.out.println("Player 1 has $" + comp1.printMoney());
+    System.out.println("Player 2 has $" + comp2.printMoney());
+    System.out.println("Player 3 has $" + comp3.printMoney());
+    System.out.println("Player 4 has $" + comp4.printMoney());
     
     if (person.playing() == true){       //player fourth (last) round of betting
     bet = 40;
