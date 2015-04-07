@@ -50,7 +50,7 @@ public class Holdem{
     value = person.betting(bet);     //player first round of betting
     pot.addToPot(value);     
     
-    /* ADD COMPUTER BETTING */
+    /* ADD COMPUTER BETTING */      //computer 1st round betting
     
     
     Cards flop1 = deck.deal();  // "the flop" -- first three community cards revealed
@@ -60,9 +60,16 @@ public class Holdem{
                       + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
                       + ", and " + flop3.getNumberString() + " of " + flop3.getSuitString());
     
-    //player second round of betting
+    if (person.playing() == true){   //player second round of betting
+    value = person.betting(bet);
+    pot.addToPot(value);
+    }
+    else {
+      
+    }
     
-    //computer 2nd round betting
+    
+    /* ADD COMPUTER BETTING */  //computer 2nd round betting
     
     Cards turn = deck.deal();  // "the turn" -- fourth community card is revealed
     System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()
@@ -70,9 +77,16 @@ public class Holdem{
                       + ", " + flop3.getNumberString() + " of " + flop3.getSuitString()
                       + ", and " + turn.getNumberString() + " of " + turn.getSuitString());
     
-    //player third round of betting
+    if (person.playing() == true){     //player third round of betting
+    bet = 40;
+    value = person.betting(bet);
+    pot.addToPot(value);
+    }
+    else {
+      
+    }
     
-    //computer 3rd round betting
+    /* ADD COMPUTER BETTING */      //computer 3rd round betting
     
     Cards river = deck.deal();    // "the river" -- fifth (last) community card is revealed
     System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()
@@ -81,11 +95,33 @@ public class Holdem{
                       + ", " + turn.getNumberString() + " of " + turn.getSuitString()
                       + ", and " + river.getNumberString() + " of " + river.getSuitString());
     
-    //player fourth (last) round of betting
+    if (person.playing() == true){       //player fourth (last) round of betting
+    bet = 40;
+    value = person.betting(bet);
+    pot.addToPot(value);
+    }
+    else {
+      
+    }
     
-    //computer 4th round betting
+    /* ADD COMPUTER BETTING */  //computer 4th round betting
     
-    //all player's hole cards are revealed
+     System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()     //all player's hole cards are revealed
+                      + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
+                      + ", " + flop3.getNumberString() + " of " + flop3.getSuitString()
+                      + ", " + turn.getNumberString() + " of " + turn.getSuitString()
+                      + ", and " + river.getNumberString() + " of " + river.getSuitString());    
+     System.out.println("Your hand is: ");
+     person.printHand();
+     System.out.println("Player 1's hand is: ");
+     comp1.printHand();
+     System.out.println("Player 2's hand is: ");
+     comp2.printHand();
+     System.out.println("Player 3's hand is: ");
+     comp3.printHand();
+     System.out.println("Player 4's hand is: ");
+     comp4.printHand();
+     
     //best hand wins the pot, or is divided between tied hands
     
   }   //end playGame

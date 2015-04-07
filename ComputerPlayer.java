@@ -21,6 +21,10 @@ public class ComputerPlayer{
     return money;
   }
   
+  public void printHand(){
+   compHand.printHand(); 
+  }
+  
   public boolean stand(){
     return(compHand.value() >= winChance);
   }
