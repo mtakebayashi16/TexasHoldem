@@ -26,6 +26,13 @@ public class Hand{
     return valTot;
   }
   
+  public void clearHand(){
+    for (int i = 0; i < handCards.length; i++){
+      handCards[i] = null;
+      cardSlots = 0;
+    }
+  }
+  
   public void addCards(Cards card){
     handCards[cardSlots] = card;
     cardSlots++;

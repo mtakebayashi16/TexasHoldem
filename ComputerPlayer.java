@@ -47,6 +47,10 @@ public class ComputerPlayer{
    return 100;
   }
   
+  public void clearHand(){
+    compHand.clearHand();
+  }
+  
   public double firstRoundBet(double betVal, double potVal){     //created a method for the first round since it will differ from other rounds (no house cards revealed)
     double bet = 0;
     if (this.stand() == true){
@@ -70,7 +74,7 @@ public class ComputerPlayer{
   
   public double secondRoundBet(Cards flop1, Cards flop2, Cards flop3, Cards hand1, Cards hand2, double betVal, double potVal){
     double bet = 0; 
-    Cards[] playingCards = new Cards[4];
+    Cards[] playingCards = new Cards[5];
     playingCards[0] = flop1; 
     playingCards[1] = flop2;
     playingCards[2] = flop3;
@@ -149,7 +153,7 @@ public class ComputerPlayer{
   
   public double thirdRoundBet(Cards flop1, Cards flop2, Cards flop3, Cards turn, Cards hand1, Cards hand2, double betVal, double potVal){
     double bet = 0; 
-    Cards[] playingCards = new Cards[5];
+    Cards[] playingCards = new Cards[6];
     playingCards[0] = flop1; 
     playingCards[1] = flop2;
     playingCards[2] = flop3;
@@ -230,7 +234,7 @@ public class ComputerPlayer{
   
   public double fourthRoundBet(Cards flop1, Cards flop2, Cards flop3, Cards turn, Cards river, Cards hand1, Cards hand2, double betVal, double potVal){
     double bet = 0; 
-    Cards[] playingCards = new Cards[6];
+    Cards[] playingCards = new Cards[7];
     playingCards[0] = flop1; 
     playingCards[1] = flop2;
     playingCards[2] = flop3;

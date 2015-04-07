@@ -18,10 +18,18 @@ public class Deck{
   public void shuffle(){                           //mixes up the cards
     for (int i = 0; i < deck.length; i++){
       Cards temp = deck[i];
-      int randomNum = (int)(Math.random()*(i+1));
+      int randomNum = (int)(Math.random()*(i));
       deck[i] = deck[randomNum];
       deck[randomNum] = temp;
     }
+  }
+  
+  public void clearDeck(){
+    int counter = 0;
+    do {
+        deck[counter] = null;
+        counter++; 
+    } while (counter < 52);
   }
   
   public int checkCardsLeft(){            //checks how many cards are left in the deck
