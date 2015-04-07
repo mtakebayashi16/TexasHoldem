@@ -108,7 +108,14 @@ public class Holdem{
     }
     
     
-    /* ADD COMPUTER BETTING */  //computer 2nd round betting
+     if (comp1.playing() == true){   //computer 2nd round betting
+    value = comp1.secondRoundBet(flop1, flop2, flop3, comp1.getCard1(), comp1.getCard2(), bet);;
+    pot.addToPot(value);
+    }
+    else { 
+    }  
+    
+     
     
     Cards turn = deck.deal();  // "the turn" -- fourth community card is revealed
     System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()

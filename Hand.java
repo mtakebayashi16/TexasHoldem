@@ -31,6 +31,14 @@ public class Hand{
     cardSlots++;
   }
   
+  public Cards getCard1(){
+    return handCards[0];
+  }
+  
+  public Cards getCard2(){
+    return handCards[1];
+  }
+  
   public void printHand(){
     System.out.print(handCards[0].getNumberString() + " of " + handCards[0].getSuitString() + " and "
                        + handCards[1].getNumberString() + " of " + handCards[1].getSuitString());

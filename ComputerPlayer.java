@@ -29,6 +29,14 @@ public class ComputerPlayer{
     return(compHand.value() >= winChance);
   }
   
+  public Cards getCard1(){
+    return compHand.getCard1();
+  }
+  
+  public Cards getCard2(){
+    return compHand.getCard2();
+  }
+  
   public double firstRoundBet(double betVal, double potVal){     //created a method for the first round since it will differ from other rounds (no house cards revealed)
    double bet = 0;
     if (this.stand() == true){
@@ -48,6 +56,20 @@ public class ComputerPlayer{
       System.out.println("Player folds");
     } 
     return bet;
+  }
+  
+  public double secondRoundBet(Cards flop1, Cards flop2, Cards flop3, Cards hand1, Cards hand2, double betVal){
+     Cards[] playingCards = new Cards[4];
+      playingCards[0] = flop1; 
+      playingCards[1] = flop2;
+      playingCards[2] = flop3;
+      playingCards[3] = hand1;
+      playingCards[4] = hand2;
+      
+      for (int i = 0; i < playingCards.length; i++){ //orders cards according to numerical value
+         
+      }
+      
   }
   
    public boolean playing(){
