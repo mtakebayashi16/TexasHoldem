@@ -4,22 +4,12 @@ public class Holdem{
   public static void main(String[] args) {
     Scanner user_input = new Scanner(System.in);
     int round = 0;   //checks what round the game is on (helps determine if more cards need to be played, etc)
-    boolean lose = false;    //checks if player has lost the game
+    boolean playerLose = false;    //checks if player has lost the game
     
     
     System.out.println("Welcome to Texas Hold'em!");
     System.out.println("What is your name?");
     String playerName = user_input.next();
-    
-    
-    do{                 //main loop
-      playGame();
-    } while(lose = false); 
-  }
-  
-  private static void playGame(){
-    double bet = 20;        //minimum bet starts at $20
-    double value;
     
     Deck deck = new Deck();
     Pot pot = new Pot();
@@ -29,6 +19,19 @@ public class Holdem{
     ComputerPlayer comp4 = new ComputerPlayer();
     HumanPlayer person = new HumanPlayer();
     
+    
+    do{                 //main loop
+   
+    playerLose = playGame(comp1, comp2, comp3, comp4, person, pot);
+    
+    } while(playerLose == false); 
+  }             //end of main loop
+  
+  private static boolean playGame(ComputerPlayer comp1, ComputerPlayer comp2, ComputerPlayer comp3, ComputerPlayer comp4, HumanPlayer person, Pot pot){
+    double bet = 20;        //minimum bet starts at $20
+    double value;
+    
+    Deck deck = new Deck();
     deck.shuffle();
     
     for (int i = 0; i < 2; i++){           //deals out "hole cards" (the player's hand)
@@ -59,12 +62,7 @@ public class Holdem{
       pot.addToPot(initialValue);
     
     System.out.println(" ");                                 // to add an extra line in the output since there was no spacing between the two lines
-    System.out.println("You have $" + person.printMoney());
-    System.out.println("Player 1 has $" + comp1.printMoney());    //should have made this a method since these printline statements are used repeatedly
-    System.out.println("Player 2 has $" + comp2.printMoney());
-    System.out.println("Player 3 has $" + comp3.printMoney());
-    System.out.println("Player 4 has $" + comp4.printMoney());
-    System.out.println("There is $" + pot.potValue() + " in the pot");
+    printStatements(comp1, comp2, comp3, comp4, person, pot);
     
     value = person.betting(bet);     //player first round of betting
     pot.addToPot(value);     
@@ -98,6 +96,7 @@ public class Holdem{
       pot.addToPot(value);
     }
     
+    checkPlayerMoney(person);  //game stops if player is out of money
     
     Cards flop1 = deck.deal();  // "the flop" -- first three community cards revealed
     Cards flop2 = deck.deal();
@@ -105,12 +104,7 @@ public class Holdem{
     System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()
                          + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
                          + ", and " + flop3.getNumberString() + " of " + flop3.getSuitString());
-    System.out.println("You have $" + person.printMoney());
-    System.out.println("Player 1 has $" + comp1.printMoney());
-    System.out.println("Player 2 has $" + comp2.printMoney());
-    System.out.println("Player 3 has $" + comp3.printMoney());
-    System.out.println("Player 4 has $" + comp4.printMoney());
-    System.out.println("There is $" + pot.potValue() + " in the pot");
+    printStatements(comp1, comp2, comp3, comp4, person, pot);
     
     if (person.playing() == true){   //player second round of betting
       value = person.betting(bet);
@@ -141,18 +135,14 @@ public class Holdem{
       pot.addToPot(value);
     }
     
+    checkPlayerMoney(person);  //game stops if player is out of money
     
     Cards turn = deck.deal();  // "the turn" -- fourth community card is revealed
     System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()
                          + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
                          + ", " + flop3.getNumberString() + " of " + flop3.getSuitString()
                          + ", and " + turn.getNumberString() + " of " + turn.getSuitString());
-    System.out.println("You have $" + person.printMoney());
-    System.out.println("Player 1 has $" + comp1.printMoney());
-    System.out.println("Player 2 has $" + comp2.printMoney());
-    System.out.println("Player 3 has $" + comp3.printMoney());
-    System.out.println("Player 4 has $" + comp4.printMoney());
-    System.out.println("There is $" + pot.potValue() + " in the pot");
+    printStatements(comp1, comp2, comp3, comp4, person, pot);
     
     if (person.playing() == true){     //player third round of betting
       bet = 40;
@@ -184,6 +174,7 @@ public class Holdem{
       pot.addToPot(value);
     }
     
+    checkPlayerMoney(person);  //game stops if player is out of money
     
     Cards river = deck.deal();    // "the river" -- fifth (last) community card is revealed
     System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()
@@ -191,12 +182,7 @@ public class Holdem{
                          + ", " + flop3.getNumberString() + " of " + flop3.getSuitString()
                          + ", " + turn.getNumberString() + " of " + turn.getSuitString()
                          + ", and " + river.getNumberString() + " of " + river.getSuitString());
-    System.out.println("You have $" + person.printMoney());
-    System.out.println("Player 1 has $" + comp1.printMoney());
-    System.out.println("Player 2 has $" + comp2.printMoney());
-    System.out.println("Player 3 has $" + comp3.printMoney());
-    System.out.println("Player 4 has $" + comp4.printMoney());
-    System.out.println("There is $" + pot.potValue() + " in the pot");
+    printStatements(comp1, comp2, comp3, comp4, person, pot);
     
     if (person.playing() == true){       //player fourth (last) round of betting
       bet = 40;
@@ -226,6 +212,7 @@ public class Holdem{
       pot.addToPot(value);
     }
     
+      checkPlayerMoney(person);  //game stops if player is out of money
     
     System.out.println("Community Cards: " + flop1.getNumberString() + " of " + flop1.getSuitString()     //all player's hole cards are revealed
                          + ", " + flop2.getNumberString() + " of " + flop2.getSuitString()
@@ -247,9 +234,48 @@ public class Holdem{
     System.out.println("Player 4's hand is: ");
     comp4.printHand();
     
-    //best hand wins the pot, or is divided between tied hands
+    /**********   COMPARE HANDS **********/ //best hand wins the pot, or is divided between tied hands
     
+    person.clearHand();
+    comp1.clearHand();
+    comp2.clearHand();
+    comp3.clearHand();
+    comp4.clearHand();
+    deck.clearDeck();
+    pot.clearPot();
+    
+    if (person.printMoney() <= 0){
+      System.out.println(" ");
+      System.out.println(" ");
+      System.out.println("You lost the game!");
+      return true;
+    }
+    else{
+    System.out.println(" ");
+    System.out.println(" ");
+    System.out.println("******* NEXT ROUND *******");
+    System.out.println(" ");
+    return false;
+    }
   }   //end playGame
+  
+  public static void printStatements(ComputerPlayer comp1, ComputerPlayer comp2, ComputerPlayer comp3, ComputerPlayer comp4, HumanPlayer person, Pot pot){
+    System.out.println("Player 1 has $" + comp1.printMoney());    
+    System.out.println("Player 2 has $" + comp2.printMoney());
+    System.out.println("Player 3 has $" + comp3.printMoney());
+    System.out.println("Player 4 has $" + comp4.printMoney());
+    System.out.println("You have $" + person.printMoney());
+    System.out.println("There is $" + pot.potValue() + " in the pot");
+  }
+  
+  public static void checkPlayerMoney(HumanPlayer person){
+    if (person.printMoney() <= 0){
+      System.out.println(" ");
+      System.out.println(" ");
+      throw new IllegalStateException("You lost the game!");
+      
+    }
+  }
   
   
   

@@ -234,7 +234,14 @@ public class Holdem{
     System.out.println("Player 4's hand is: ");
     comp4.printHand();
     
-    /**********   COMPARE HANDS **********/ //best hand wins the pot, or is divided between tied hands
+    int pHand = person.compareToCards(flop1, flop2, flop3, turn, river, person.getCard1(), person.getCard2()); //best hand wins the pot, or is divided between tied hands
+    int c1Hand = comp1.compareToCards(flop1, flop2, flop3, turn, river, comp1.getCard1(), comp1.getCard2());
+    int c2Hand = comp2.compareToCards(flop1, flop2, flop3, turn, river, comp2.getCard1(), comp2.getCard2());
+    int c3Hand = comp3.compareToCards(flop1, flop2, flop3, turn, river, comp3.getCard1(), comp3.getCard2());
+    int c4Hand = comp4.compareToCards(flop1, flop2, flop3, turn, river, comp4.getCard1(), comp4.getCard2());
+    
+    //give pot to best hand
+    //if ties, divide pot
     
     person.clearHand();
     comp1.clearHand();

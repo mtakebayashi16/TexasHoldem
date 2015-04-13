@@ -29,6 +29,10 @@ public class HumanPlayer{
    return 100;
   }
   
+  public void clearHand(){
+    humHand.clearHand();
+  }
+  
   public boolean stand(){
     String input;
     char i;            //so the program can compare the user input
@@ -67,15 +71,16 @@ public class HumanPlayer{
     }
     else if (c == 'r'){                //if player raises, they can input by how much they would like to raise
       System.out.println("How much would you like to raise by? (only type in a number value)");
-      cost = in.nextInt();
-      cost += bet;
+      String costString = in.nextLine();
+      cost = Double.parseDouble(costString);
       if (cost <= 0){
         System.out.println("Please input a value greater than 0");
         cost = in.nextInt();
-        cost += bet;
       }
-      else
+      else{
+      cost = cost + bet;
       money = money - cost;  //subtracts input value from player's money
+      }
     }
     else{                   //if player folds, no money is taken, but the player is no longer playing that round
       playing = false;
