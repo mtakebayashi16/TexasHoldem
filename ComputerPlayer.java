@@ -42,13 +42,21 @@ public class ComputerPlayer{
   }
   
   public double bigBlind(){
+    if (money >= 200){
     money = money - 200;
     return 200;
+    }
+    else
+      return 0;
   }
   
   public double smallBlind(){
+    if (money >= 100){
     money = money - 100;
     return 100;
+    }
+    else 
+      return 0;
   }
   
   public void clearHand(){
@@ -57,22 +65,35 @@ public class ComputerPlayer{
   
   public double firstRoundBet(double betVal, double potVal){     //created a method for the first round since it will differ from other rounds (no house cards revealed)
     double bet = 0;
+    if (money > 0){
     if (this.stand() == true){
       if (compHand.value() >= 190){      //raise, chose a random numerical value for the cards to be higher then (king value * 14 + queen value)
+        if (betVal < money){
         money = money - (potVal * 0.3);   //raises by 30% of the pot's value
         bet = (potVal * 0.3) + betVal;
         System.out.println("Player raises by " + (potVal * 0.3));
+        }
+        else
+          bet = money;    //if the player has less than the bet value, they bet all the money they have left
       }
       else{                            //call
+        if (betVal <= money){
         money = money - betVal;
         bet = betVal;
         System.out.println("Player calls");
+        }
+        else
+          bet = money;
       }
     }
     else{
       playing = false;                //fold cards
       System.out.println("Player folds");
     } 
+    }
+    else{
+      playing = false;
+    }
     return bet;
   }
   
@@ -137,14 +158,22 @@ public class ComputerPlayer{
     
     if (valueofCards > 200){
       if (valueofCards > 400){
+        if (betVal < money){
         money = money - (potVal * 0.3);   //raises by 30% of the pot's value
         bet = (potVal * 0.3) + betVal;
         System.out.println("Player raises by " + (potVal * 0.3));
+        }
+        else 
+          bet = money;
       }
       else{                        //call
+        if (betVal <= money){
         money = money - betVal;
         bet = betVal;
         System.out.println("Player calls"); 
+        }
+        else
+          bet = money;
       }
     }
     else{ 
@@ -217,14 +246,22 @@ public class ComputerPlayer{
     
     if (valueofCards > 200){
       if (valueofCards > 400){
+        if (betVal < money){
         money = money - (potVal * 0.3);   //raises by 30% of the pot's value
         bet = (potVal * 0.3) + betVal;
         System.out.println("Player raises by " + (potVal * 0.3));
+        }
+        else
+          bet = money;
       }
       else{                        //call
+        if (betVal <= money){
         money = money - betVal;
         bet = betVal;
         System.out.println("Player calls"); 
+        }
+        else
+          bet = money;
       }
     }
     else{ 
@@ -299,14 +336,22 @@ public class ComputerPlayer{
     
     if (valueofCards > 200){
       if (valueofCards > 400){
+        if (betVal < money){
         money = money - (potVal * 0.3);   //raises by 30% of the pot's value
         bet = (potVal * 0.3) + betVal;
         System.out.println("Player raises by " + (potVal * 0.3));
+        }
+        else
+          bet = money;
       }
       else{                        //call
+        if (betVal <= money){
         money = money - betVal;
         bet = betVal;
         System.out.println("Player calls"); 
+        }
+        else 
+          bet = money;
       }
     }
     else{ 
