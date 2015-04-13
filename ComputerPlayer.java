@@ -29,6 +29,10 @@ public class ComputerPlayer{
     return(compHand.value() >= winChance);
   }
   
+    public void getMoney(double winnings){
+   money = money + winnings; 
+  }
+    
   public Cards getCard1(){
     return compHand.getCard1();
   }
@@ -346,7 +350,7 @@ public class ComputerPlayer{
     boolean fourOfAKind = false;
     boolean straightFlush = false;  
     
-    for (int i = 0; i < playingCards.length-1; i++){   //check how many numbers are the same
+    for (int i = 0; i < playingCards.length-4; i++){   //check how many numbers are the same
       if (playingCards[i].getNumber() == playingCards[i+1].getNumber() && playingCards[i].getNumber() == playingCards[i+2].getNumber()){        
         if (playingCards[i].getNumber() == playingCards[i+3].getNumber()){
           valueOfCards = 700;  //4 of a kind has a value of 700
@@ -405,14 +409,14 @@ public class ComputerPlayer{
     }
     
     if (fullHouse == false && fourOfAKind != true && straightFlush != true){  //check for a flush only if higher scoring combinations aren't present
-      for (int i = 0; i < playingCards.length; i++){
+      for (int i = 1; i < playingCards.length; i++){
         if (playingCards[i].getSuit() < playingCards[i-1].getSuit()){       //sorts suit in order by suit value
           Cards temp = playingCards[i];
           playingCards[i] = playingCards[i-1];
           playingCards[i-1] = temp;
         }
       }
-      for (int k = 0; k < playingCards.length-1; k++){   //check how many numbers are the same
+      for (int k = 0; k < playingCards.length-5; k++){   //check how many numbers are the same
         if (playingCards[k].getSuit() == playingCards[k+1].getSuit() && playingCards[k].getSuit() == playingCards[k+2].getSuit()
               && playingCards[k].getSuit() == playingCards[k+3].getSuit() && playingCards[k].getSuit() == playingCards[k+4].getSuit()){        
           valueOfCards = 500;  //flush has a value of 500
@@ -422,7 +426,7 @@ public class ComputerPlayer{
     }
     
     if (combination != true && threeOfAKind != true){  //if there are no combinations, check for the highest card
-      valueOfCards = playingCards[playingCards.length].getNumber();
+      valueOfCards = playingCards[playingCards.length-1].getNumber();
     }
     
     return valueOfCards;
