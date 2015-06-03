@@ -78,8 +78,12 @@ public class HumanPlayer{
     c = choice.charAt(0);
     
     if (c == 'c'){             //if player calls, the bet value is subtracted and added to the pot
+      if (bet <= money){
       money = money - bet;
       cost = bet;
+      }
+      else
+        cost = money;
     }
     else if (c == 'r'){                //if player raises, they can input by how much they would like to raise
       System.out.println("How much would you like to raise by? (only type in a number value)");
@@ -87,6 +91,10 @@ public class HumanPlayer{
       cost = Double.parseDouble(costString);
       if (cost <= 0){
         System.out.println("Please input a value greater than 0");
+        cost = in.nextInt();
+      }
+      else if (cost < money){
+        System.out.println("You can't bet more money than you have!");
         cost = in.nextInt();
       }
       else{

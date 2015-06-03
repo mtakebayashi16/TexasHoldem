@@ -93,7 +93,7 @@ public class HumanPlayer{
         System.out.println("Please input a value greater than 0");
         cost = in.nextInt();
       }
-      else if (cost < money){
+      else if (cost > money){
         System.out.println("You can't bet more money than you have!");
         cost = in.nextInt();
       }
